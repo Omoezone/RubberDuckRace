@@ -10,12 +10,14 @@ class MainTest {
     void createQueueObject(){
         //Create the MyQueue object
         MyQueue mq = new MyQueue();
-        //Confirms that it is null when created
-        // TODO FIND UD AF HVORDAN DETTE FUNGERE IFT TOSTRING?   assertNull(mq);
+        Duck duck = new Duck(4);
+        //Confirms that it is not null when created
+        assertNotNull(mq);
         //adds different values to and does checks
-        mq.add(4);
+        mq.add(duck);
         assertEquals(4,mq.get(0));
-        mq.add(6);
+        duck.setNumber(6);
+        mq.add(duck);
         assertEquals(6,mq.get(1));
         //removes the first value, which should be the first one to be added
         mq.remove();
@@ -24,35 +26,40 @@ class MainTest {
     @Test
     void size(){
         MyQueue mq = new MyQueue();
-        mq.add(4);
-        mq.add(5);
+        Duck duck = new Duck(4);
+        mq.add(duck);
+        mq.add(new Duck(2));
         // Size should return 2
         assertEquals(2,mq.size());
     }
     @Test
     void get(){
         MyQueue mq = new MyQueue();
-        mq.add(4);
-        mq.add(5);
+        Duck duck = new Duck(4);
+        mq.add(duck);
+        mq.add(new Duck(5));
         //index 1 should return 5
         assertEquals(5,mq.get(1));
     }
     @Test
     void set(){
         MyQueue mq = new MyQueue();
-        mq.add(4);
+        Duck duck = new Duck(1);
+        mq.add(duck);
+        assertEquals(1,mq.get(0));
         //Sets the value at index 0 = 4, to be 5
-        mq.set(0,5);
+        duck.setNumber(5);
         assertEquals(5,mq.get(0));
     }
     @Test
     void remove(){
         MyQueue mq = new MyQueue();
-        mq.add(4);
-        mq.add(11);
-        assertEquals(4,mq.get(0));
+        Duck duck = new Duck(1);
+        mq.add(duck);
+        mq.add(new Duck(11));
+        assertEquals(duck,mq.get(0));
         mq.remove();
-        assertEquals(11,mq.get(0));
+        assertEquals(mq.get(0),mq.get(0));
         mq.remove();
         //the next remove, should return "Can't remove value, as the Queue is empty!"
         //Hør asger hvad man kan gøre her?
@@ -62,15 +69,15 @@ class MainTest {
     void setList(){
         MyQueue mq = new MyQueue();
         MyQueue mq1 = mq;
-        mq.add(4);
-        mq.add(11);
+        mq.add(new Duck(4));
+        mq.add(new Duck(11));
         mq1.setList(mq.getList());
         assertEquals(mq,mq1);
     }
     @Test
     void toStringTest(){
         MyQueue mq = new MyQueue();
-        mq.add(4);
+        mq.add(new Duck(4));
         String expression = "MyQueue: " + "list = " + mq.getList();
         assertEquals(expression,mq.toString());
     }

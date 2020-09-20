@@ -3,38 +3,37 @@ package RubDuck;
 import java.util.ArrayList;
 
 public class MyQueue {
-    private ArrayList<Integer> list;
+    private ArrayList<Duck> list;
 
     MyQueue(){
-        list = new ArrayList<Integer>();
+        list = new ArrayList<Duck>();
     }
 
-    public ArrayList<Integer> getList() {
+    public ArrayList<Duck> getList() {
         return list;
     }
 
-    public void setList(ArrayList<Integer> list) {
+    public void setList(ArrayList<Duck> list) {
         this.list = list;
     }
     public int size(){
         return list.size();
     }
-    public void add(int index){
+    public void add(Duck index){
         list.add(index);
     }
-    public int get(int index){
+    public Duck get(int index){
         return list.get(index);
     }
     public void remove(){
-        if(list.size() == 0){
-            System.out.println("Can't remove value, as the Queue is empty!");
-        }else {
+        if(list.size() > 0){
             list.remove(0);
         }
     }
-    public void set(int index,int value){
+    public void set(int index,Duck value){
         list.set(index,value);
     }
+
     @Override
     public String toString() {
         return "MyQueue: " + "list = " + list;
