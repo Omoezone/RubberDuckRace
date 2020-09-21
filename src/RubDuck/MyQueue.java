@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class MyQueue {
     private ArrayList<Duck> list;
+    private boolean isEmpty;
 
     MyQueue(){
         list = new ArrayList<Duck>();
@@ -16,6 +17,15 @@ public class MyQueue {
     public void setList(ArrayList<Duck> list) {
         this.list = list;
     }
+
+    public boolean isEmpty() {
+        return isEmpty;
+    }
+
+    public void setEmpty(boolean empty) {
+        isEmpty = empty;
+    }
+
     public int size(){
         return list.size();
     }
@@ -26,9 +36,7 @@ public class MyQueue {
         return list.get(index);
     }
     public void remove(){
-        if(list.size() > 0){
             list.remove(0);
-        }
     }
     public void set(int index,Duck value){
         list.set(index,value);
@@ -36,6 +44,6 @@ public class MyQueue {
 
     @Override
     public String toString() {
-        return "MyQueue: " + "list = " + list;
+        return "List = " + list;
     }
 }

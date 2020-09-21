@@ -1,5 +1,7 @@
 package RubDuck;
 
+import java.util.Scanner;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -27,7 +29,12 @@ public class Main {
 
 
         */
-    Tournament game = new Tournament(10);
-        System.out.println(game);
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Input your desired amount og queues! \nFor queue will there be the same amount of ducks in each queue.\nSo if you press 10, then there will be 10 queues with 10 ducks in (100 ducks in all)");
+        System.out.println("--*--*--*--*--*--*--*--*--*--*--*--");
+        System.out.print("Input here please: ");
+        int queAmount = scan.nextInt();
+        Tournament game = new Tournament(queAmount);
+        game.playGame();
     }
 }
